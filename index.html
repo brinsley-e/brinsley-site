@@ -1,0 +1,229 @@
+<!doctype html>
+<!-- Brinsley — © 2026. All rights reserved. Proprietary; see LICENSE. Inspection permitted, reuse is not. -->
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brinsley — Article to Flashcards | The word, and the sentence your class actually read</title>
+<meta name="description" content="Brinsley turns a highlighted article into a vocabulary deck for Anki, carrying the exact sentence each word appeared in. No servers, no accounts, no data collection.">
+<style>
+  :root{
+    --ground:#FDFBF7;
+    --ink:#66023C;
+    --ink-deep:#4A0230;
+    --text:#2B2530;
+    --muted:#6E6572;
+    --gold:#8A6D14;
+    --rule:#E4DCD2;
+    --card:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--ground);color:var(--text);font:17px/1.65 Georgia,'Times New Roman',serif}
+  main{max-width:680px;margin:0 auto;padding:0 24px}
+  header.hero{text-align:center;padding:72px 0 48px;border-bottom:1px solid var(--rule)}
+  .wordmark{line-height:0;margin:0 auto}
+  .wordmark svg{width:100%;max-width:400px;height:auto}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  .hero .tagline{margin-top:24px;color:var(--gold);font-size:20px;line-height:1.5}
+  .hero .under{margin-top:14px;color:var(--gold);font-size:16px}
+  section{padding:44px 0;border-bottom:1px solid var(--rule)}
+  h2{font-size:24px;color:var(--ink);margin-bottom:16px;text-align:center}
+  h3{font-size:18px;color:var(--ink);margin:22px 0 16px}
+  p{margin-bottom:12px}
+  ul{margin:0 0 12px 22px}
+  li{margin-bottom:7px}
+  .lede{text-align:center;font-size:17px}
+  .steps{list-style:none;margin:18px 0 0;counter-reset:s}
+  .steps li{counter-increment:s;position:relative;padding-left:44px;margin-bottom:16px}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:29px;height:29px;
+    border:1px solid var(--ink);border-radius:50%;color:var(--ink);font-size:15px;
+    line-height:27px;text-align:center}
+  .creed{background:var(--card);border:1px solid var(--rule);padding:22px 26px;margin:8px 0 12px}
+  .creed li{list-style:none;margin:0 0 16px}
+  .creed li:last-child{margin-bottom:0}
+  .creed .said{display:block}
+  .creed .held{display:block;margin-top:4px}
+  .arch{margin-top:22px;background:var(--card);border:1px solid var(--rule);padding:18px}
+  .arch svg{width:100%;height:auto;display:block}
+  .note{font-size:15px;color:var(--muted)}
+  .centre{text-align:center}
+  .price-card{background:var(--card);border:1px solid var(--ink);padding:30px;text-align:center;margin-top:10px}
+  .price-card .amount{font-size:40px;color:var(--ink)}
+  .badge{font-family:Georgia,serif;color:var(--ink);white-space:nowrap}
+  a{color:var(--ink)}
+  address{font-style:normal}
+  footer{padding:36px 0 60px;font-size:15px;color:var(--muted);text-align:center}
+  @media (min-width:728px){
+    /* Reclaims main's own side padding so the middle sentence keeps "chose." on
+       its line. Only above 728px, where main has reached its full 680px and the
+       negative margin stays inside the page's measure rather than the viewport's. */
+    .wide{margin-left:-24px;margin-right:-24px}
+  }
+  @media (max-width:680px){
+    .hero{padding:52px 0 36px}
+    .hero .tagline{font-size:18px}
+  }
+</style>
+</head>
+<body>
+<main>
+
+<header class="hero">
+  <h1 class="wordmark">
+    <span class="sr-only">Brinsley</span>
+    <!-- Outlined to paths at build time. Paths only: no font is redistributed
+         and no webfont is fetched to render this page. The face, its designer
+         and its licence are recorded in brand/, which is not published — a page
+         that names the typeface hands a copyist the recipe for the wordmark. -->
+    <svg viewBox="-59 -751 2826 1208" fill="#66023C" fill-rule="nonzero" aria-hidden="true" focusable="false">
+      <path d="M588 -394Q588 -394 632 -397Q703 -397 737.5 -370.5Q772 -344 772.0 -295.5Q772 -247 728.0 -182.0Q684 -117 614 -64H671Q706 -64 720.0 -67.0Q734 -70 736 -70Q750 -70 750.0 -55.0Q750 -40 730 -39Q653 -39 582 -41Q470 30 362 30Q311 30 281.0 11.0Q251 -8 251.0 -27.5Q251 -47 267.5 -58.0Q284 -69 314 -69Q431 -69 576 -64Q636 -113 672.0 -177.5Q708 -242 708 -294Q708 -377 619 -377Q584 -377 546.5 -366.0Q509 -355 501.5 -350.5Q494 -346 492 -346Q486 -346 486.0 -354.5Q486 -363 512 -375Q626 -430 735.0 -521.5Q844 -613 844 -652Q844 -670 816 -670Q702 -669 503 -499Q463 -396 371.5 -246.0Q280 -96 180.0 22.5Q80 141 31 141Q1 141 1 110Q1 39 135.5 -143.0Q270 -325 440 -478Q470 -551 470.0 -584.5Q470 -618 454.0 -637.5Q438 -657 407 -666Q358 -679 303.5 -679.0Q249 -679 220.0 -676.5Q191 -674 149.5 -666.5Q108 -659 82.0 -640.5Q56 -622 56.0 -593.5Q56 -565 84.0 -549.5Q112 -534 152.5 -528.0Q193 -522 233.0 -515.0Q273 -508 301.0 -487.5Q329 -467 329 -430Q329 -420 324.5 -420.0Q320 -420 317.5 -423.0Q315 -426 309 -435Q300 -448 282.5 -455.0Q265 -462 228.5 -468.5Q192 -475 159.5 -482.5Q127 -490 94.0 -502.0Q61 -514 41.0 -536.0Q21 -558 21.0 -587.5Q21 -617 46.0 -640.0Q71 -663 112 -676Q196 -701 287 -701Q523 -701 523 -577Q523 -566 518 -544Q720 -707 846 -707Q902 -707 902 -673Q902 -624 799.5 -534.0Q697 -444 588 -394ZM56 112Q85 112 211.5 -73.5Q338 -259 414 -419Q264 -276 148.5 -121.5Q33 33 33 89Q33 112 56 112ZM545 -42 364 -46Q287 -46 287 -23Q287 -10 313.0 1.5Q339 13 373 13Q462 13 545 -42Z"/>
+      <path d="M1078 -166Q1085 -171 1091.0 -171.0Q1097 -171 1097 -164V-162Q1022 -102 949.0 -49.5Q876 3 842 3Q817 3 817.0 -24.0Q817 -51 841.0 -78.0Q865 -105 888.5 -125.0Q912 -145 912.0 -151.5Q912 -158 904.5 -166.5Q897 -175 892 -178Q875 -161 818 -116L814 -131Q877 -181 887 -198V-207Q887 -232 892.0 -241.0Q897 -250 916.0 -266.0Q935 -282 942.0 -282.0Q949 -282 954.5 -277.0Q960 -272 960.0 -267.0Q960 -262 956.5 -255.5Q953 -249 949.5 -244.5Q946 -240 940.0 -233.5Q934 -227 932.5 -224.5Q931 -222 929.5 -216.0Q928 -210 923.0 -206.0Q918 -202 918.0 -196.0Q918 -190 926.0 -169.5Q934 -149 934.0 -139.5Q934 -130 897.0 -94.5Q860 -59 860 -37Q860 -25 871 -25Q885 -25 923 -50L935 -58Q1000 -103 1057 -149Z"/>
+      <path d="M1185.5 -302.0Q1195 -302 1200.5 -296.0Q1206 -290 1206.0 -279.0Q1206 -268 1191.0 -251.0Q1176 -234 1165.0 -234.0Q1154 -234 1149.0 -240.5Q1144 -247 1144.0 -255.5Q1144 -264 1160.0 -283.0Q1176 -302 1185.5 -302.0ZM1268 -167Q1276 -172 1280.5 -172.0Q1285 -172 1285 -166V-163Q1289 -163 1231.5 -119.0Q1174 -75 1108.5 -31.0Q1043 13 1026 13Q997 13 997 -11Q997 -40 1047.0 -120.5Q1097 -201 1120 -201Q1137 -201 1137.0 -188.0Q1137 -175 1091.0 -117.0Q1045 -59 1045 -34Q1045 -20 1055.5 -20.0Q1066 -20 1108 -48Q1183 -98 1246 -149Z"/>
+      <path d="M1672 -163Q1461 13 1411 13Q1382 13 1382.0 -11.0Q1382 -35 1403.5 -68.0Q1425 -101 1446.5 -126.5Q1468 -152 1468.0 -157.0Q1468 -162 1465 -162Q1372 -100 1354.5 -86.0Q1337 -72 1297.5 -40.0Q1258 -8 1246.0 0.0Q1234 8 1220 8Q1206 8 1206 -4Q1206 -18 1262 -92Q1316 -166 1316 -175Q1316 -177 1312.5 -177.0Q1309 -177 1226 -116L1222 -131Q1293 -188 1318.0 -204.0Q1343 -220 1358.5 -220.0Q1374 -220 1374 -205Q1374 -195 1317.5 -123.5Q1261 -52 1261.0 -46.5Q1261 -41 1264.5 -41.0Q1268 -41 1378.5 -121.5Q1489 -202 1513 -202Q1520 -202 1526.5 -196.5Q1533 -191 1533 -186Q1533 -174 1480.0 -106.5Q1427 -39 1427.0 -30.0Q1427 -21 1439.5 -21.0Q1452 -21 1493 -48Q1568 -97 1631 -149L1653 -167Q1660 -172 1666.0 -172.0Q1672 -172 1672 -166Z"/>
+      <path d="M1850 -166Q1858 -171 1863.5 -171.0Q1869 -171 1869 -164V-162Q1792 -97 1706.5 -40.0Q1621 17 1598.0 17.0Q1575 17 1559.5 8.5Q1544 0 1544.0 -11.0Q1544 -22 1550.0 -29.5Q1556 -37 1561.0 -37.0Q1566 -37 1577.5 -21.5Q1589 -6 1600 -6Q1623 -6 1636.0 -55.0Q1649 -104 1649.0 -122.5Q1649 -141 1646.5 -141.0Q1644 -141 1642 -139L1613 -116L1609 -131Q1672 -181 1682 -198Q1688 -214 1699 -214Q1706 -214 1706.0 -209.0Q1706 -204 1699.0 -187.5Q1692 -171 1680.5 -113.0Q1669 -55 1669.0 -46.0Q1669 -37 1674 -37Q1744 -80 1822 -144Z"/>
+      <path d="M2092 -166Q2099 -171 2105.0 -171.0Q2111 -171 2111 -164V-162Q2007 -76 1953 -42Q1883 11 1835 11Q1793 11 1793 -39Q1793 -106 1879.5 -237.5Q1966 -369 2074.0 -474.0Q2182 -579 2237 -579Q2262 -579 2262 -557Q2262 -502 2130.5 -375.5Q1999 -249 1872 -160Q1835 -89 1835.0 -52.0Q1835 -15 1861.0 -15.0Q1887 -15 1929 -45Q2000 -87 2067 -145ZM2212 -547Q2170 -547 2063.0 -426.0Q1956 -305 1886 -184Q2001 -266 2111.0 -384.5Q2221 -503 2221 -538Q2221 -547 2212 -547Z"/>
+      <path d="M2350 -166Q2357 -171 2363.0 -171.0Q2369 -171 2369 -164V-162Q2265 -76 2196.0 -33.0Q2127 10 2071 10Q2026 10 2026 -34Q2026 -99 2092.0 -167.5Q2158 -236 2203 -236Q2228 -236 2228 -208Q2223 -153 2070 -60V-50Q2070 -17 2104.5 -17.0Q2139 -17 2179 -40Q2257 -86 2325 -145ZM2177 -205Q2155 -205 2120.5 -168.0Q2086 -131 2074 -84Q2122 -113 2155.0 -145.5Q2188 -178 2188.0 -191.5Q2188 -205 2177 -205Z"/>
+      <path d="M2305 114 2318 97Q2334 78 2338 72Q2309 85 2292.0 89.5Q2275 94 2275 96ZM2310 174Q2310 164 2307 153Q2160 337 2160 373Q2160 376 2163 376Q2180 376 2215.0 343.0Q2250 310 2280.0 261.0Q2310 212 2310 174ZM2230 97Q2233 89 2234.5 88.0Q2236 87 2242.0 86.5Q2248 86 2280.0 77.5Q2312 69 2356 50Q2484 -113 2491.5 -127.5Q2499 -142 2499.0 -145.0Q2499 -148 2495.0 -148.0Q2491 -148 2486 -141Q2484 -140 2459.5 -117.5Q2435 -95 2411.5 -76.0Q2388 -57 2357.0 -39.5Q2326 -22 2304.0 -22.0Q2282 -22 2282 -38Q2283 -75 2332.5 -140.0Q2382 -205 2399.0 -205.0Q2416 -205 2416 -196Q2416 -191 2370.5 -134.0Q2325 -77 2325.0 -63.0Q2325 -49 2334 -49Q2352 -49 2437.5 -122.0Q2523 -195 2543 -195Q2549 -195 2554.5 -189.0Q2560 -183 2560 -176Q2560 -154 2416 21Q2551 -54 2667 -149L2689 -167Q2697 -172 2702.0 -172.0Q2707 -172 2707 -167L2706 -163Q2711 -163 2653.0 -119.0Q2595 -75 2546.0 -41.0Q2497 -7 2395 45L2324 132Q2338 152 2338 179Q2338 225 2299.0 281.5Q2260 338 2211.5 375.5Q2163 413 2132 413Q2123 413 2115.5 406.5Q2108 400 2108.0 388.5Q2108 377 2119.5 354.0Q2131 331 2153.5 300.5Q2176 270 2196.0 245.5Q2216 221 2247.0 184.0Q2278 147 2293 129Q2275 113 2252.5 109.0Q2230 105 2230 97Z"/>
+    </svg>
+  </h1>
+  <p class="tagline">Article to Flashcards.<br>The word, and the sentence your class actually read.</p>
+  <p class="under">for Teachers</p>
+</header>
+
+<section id="what">
+  <p class="lede">Turn an article your class is already reading into a vocabulary deck, in about ten seconds.</p>
+  <p style="margin-top:18px">Choosing the words by hand, scrolling back to find the sentence each one appeared in, and&nbsp;typing both into a spreadsheet is an evening's work. Brinsley does it while you wait.</p>
+  <ol class="steps">
+    <li><strong>Highlight the Passage.</strong> Any text or passage in an article you are already on.</li>
+    <li><strong>Click the Icon.</strong> Brinsley picks out the words worth teaching and pairs each one with the sentence it appeared in — word for word from your article, not a dictionary example.</li>
+    <li><strong>Untick Anything You Don't Want.</strong> For any word you may want to exclude.</li>
+  </ol>
+</section>
+
+<section id="get">
+  <h2>What You Get</h2>
+  <ul>
+    <li>The words worth teaching, chosen by how common a word is rather than how long it is.</li>
+    <li>Each word's own sentence, taken word for word from the text your class read.</li>
+    <li>A level estimate on every card, written <span class="badge">~B1</span>, <span class="badge">~B2</span> and so on.</li>
+    <li>A review table, so you decide what makes the deck.</li>
+    <li>A <code>.csv</code> built for Anki, tagged with the article it came from.</li>
+  </ul>
+  <h3 class="centre">Why the Sentence Matters</h3>
+  <p class="centre wide">A definition tells a student what a word means.<br>
+    The sentence tells them how it is used; in the piece they just read, in the register the writer chose.<br>
+    That is the laborious part to collect by hand, and it is the part Brinsley exists to do.</p>
+</section>
+
+<section id="promises">
+  <h2>Six Promises, and What Holds Each</h2>
+  <p class="lede wide">Brinsley is built so that trusting us is unnecessary.<br>
+    Every promise is worded once, in the open, and held by something that fails if it stops being true.</p>
+  <ul class="creed">
+    <li>
+      <strong class="said">Brinsley makes no network request. There is no server to speak to, no account to hold, and no key to surrender.</strong>
+      <span class="held">Held by the extension's own content security policy, which permits no destination at all; and proved at runtime by pointing a loaded copy at a live server and watching the browser refuse the call while that server's log stays empty.</span>
+    </li>
+    <li>
+      <strong class="said">Two Permissions Only: activeTab and Scripting. No host permissions are sought, and no storage permission is held.</strong>
+      <span class="held">Read back off a loaded copy, not merely off the manifest: the running browser is asked what it actually granted. Brinsley ships unminified, so the manifest inside the package can be opened and the same two read off it by hand.</span>
+    </li>
+    <li>
+      <strong class="said">Nothing runs until you ask. Brinsley declares no content script and lies dormant until you click it.</strong>
+      <span class="held">A build that declared one would not get past the check.</span>
+    </li>
+    <li>
+      <strong class="said">What you highlight is never stored. Brinsley holds no storage permission, so there is nothing to store it with. It is held while the panel is open, and written only to the file you save.</strong>
+      <span class="held">The browser does not hand the storage interface to an extension that has not asked for it, so on a loaded copy that interface is not empty — it is absent. This is a stronger thing to be able to say than "we did not write anything down", and it is why the permission was given up.</span>
+    </li>
+    <li>
+      <strong class="said">Every byte of Brinsley ships inside it. No third-party code, no analytics, no telemetry.</strong>
+      <span class="held">Nothing is loaded from anywhere. There is no library, no tag, no font request, and no content delivery network in the package.</span>
+    </li>
+    <li>
+      <strong class="said">The sentence on the back of every card is taken word for word from the article you highlighted. Brinsley writes no example sentences of its own.</strong>
+      <span class="held">Every sentence in the finished deck must occur, character for character, in the text you highlighted, and every word on a card face must occur inside its own sentence. This is the reason the product exists, so it is checked rather than asserted.</span>
+    </li>
+  </ul>
+  <p class="note centre" style="margin-top:20px;font-weight:700;color:var(--text)">This page sets no cookie, runs no analytics, and loads nothing from anywhere else. It is one file.</p>
+
+  <div class="arch" role="img" aria-label="Diagram: the article, Brinsley and the saved file all sit inside your browser. Where a server would be, there is nothing, and no line reaches it.">
+    <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="10" y="24" width="330" height="120" fill="#FDFBF7" stroke="#66023C"/>
+      <text x="175" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#66023C">Your Browser</text>
+      <text x="175" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#2B2530">The Article You Highlighted</text>
+      <text x="175" y="92" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#2B2530">Brinsley, Reading It Once</text>
+      <text x="175" y="112" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#2B2530">The <tspan font-weight="700">.csv</tspan> You Save</text>
+      <text x="175" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#6E6572">All Three, and Nothing Leaves</text>
+
+      <rect x="410" y="24" width="220" height="120" fill="none" stroke="#B9AFA4" stroke-dasharray="5 5"/>
+      <text x="520" y="76" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#6E6572">No Server</text>
+      <text x="520" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#6E6572">No Account</text>
+
+      <!-- The space between the two boxes is deliberately empty. An arrow with
+           a line through it would still be an arrow, and would draw the eye to
+           a path that does not exist. Nothing is the honest figure. -->
+
+      <text x="320" y="180" text-anchor="middle" font-family="Georgia,serif" font-size="14" font-style="italic" fill="#2B2530">There is no line between the two boxes<tspan font-style="normal">,</tspan> because there is no line to draw<tspan font-style="normal">.</tspan></text>
+      <text x="320" y="199" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#6E6572">The figure is plain SVG. As with the rest of this page, no script animates it.</text>
+    </svg>
+  </div>
+</section>
+
+<section id="warning">
+  <h2>Permission Warning</h2>
+  <p>Depending on the browser, you may be told that Brinsley can <em>"read and change your data on the sites you visit"</em>. That is accurate about the mechanism and misleading about the use, so here is exactly what happens:</p>
+  <ul>
+    <li>It runs only when you click the icon. It declares no content script, so nothing happens on page load.</li>
+    <li>It reads only the tab in front of you, and only the passage you highlighted.</li>
+    <li>It holds no storage permission. The browser does not hand that interface to an extension that has not asked for it, so what you highlight cannot be written down.</li>
+    <li>It makes no network request. There is no server to speak to, no account to hold, and no key to surrender.</li>
+  </ul>
+  <p>Brinsley holds two permissions — <code>activeTab</code> and <code>scripting</code> — and no host permissions at all.</p>
+  <h3 class="centre">No Data Is Collected</h3>
+  <p>Not anonymised, not aggregated, not "to improve the service". There is nowhere for it to go.</p>
+</section>
+
+<section id="limits">
+  <h2>What It Does Not Do</h2>
+  <p class="lede" style="color:var(--ink)">Stated Here Rather Than Discovered Later.</p>
+  <ul style="margin-top:18px">
+    <li><strong>English only</strong>, for now.</li>
+    <li><strong>The level shown is an estimate</strong> from word frequency, not a measurement against the Common European Framework. That is why every card reads <span class="badge">~B2</span> and never a bare <span class="badge">B2</span>: the bands behind it are ours, authored by hand, and a plain letter would claim a standard we did not test against.</li>
+    <li><strong>It reads the page you are on.</strong> It cannot reach a file saved to your disk unless you switch on file access yourself, and it will say so plainly rather than ask you to reload.</li>
+    <li><strong>It is version 0.1.0.</strong> The word list is bounded and it will occasionally offer a name, or miss a word you wanted. The review table is there because of exactly that: nothing reaches your deck that you did not tick.</li>
+  </ul>
+</section>
+
+<section id="price">
+  <h2>Price</h2>
+  <div class="price-card">
+    <div class="amount">Free</div>
+    <p style="margin-top:10px">Version 0.1.0 is free.<br>No account, no sign-in, no card, and nothing to cancel.</p>
+  </div>
+  <!-- Says nothing about the payment model, deliberately. A model is the one class
+       of promise this project cannot hold by engineering, so what is promised here
+       is disclosure instead, which stays keepable whatever the model turns out to
+       be. The present-tense claims above are pinned to 0.1.0 for the same reason:
+       they are true of 0.1.0 permanently, but would go false the day a tier
+       appears. Do not restore a promise about how Brinsley charges. -->
+  <p class="note centre" style="margin-top:20px">There is no tip jar on this page and no third party to pass through. If Brinsley ever charges for anything, the price and the terms will be written here before anything is charged anywhere.</p>
+</section>
+
+<section id="contact">
+  <h2>Correspondence</h2>
+  <p class="centre">One published door, so that you never have to classify your own problem before writing.</p>
+  <address class="centre" style="margin-top:14px;font-size:19px">
+    <a href="mailto:enquiry@brinsley.info">enquiry@brinsley.info</a>
+  </address>
+  <p class="note centre" style="margin-top:20px">Ordinary e-mail is no sealed letter: it rests, in the clear, on centralised providers at both ends.<br>Include no personal detail your matter does not require.</p>
+</section>
+
+<footer>
+  <strong>© 2026 Brinsley™ · brinsley.info<br>
+  All Rights Reserved. Proprietary. Inspection Permitted, Reuse Is Not.</strong>
+</footer>
+
+</main>
+</body>
+</html>
