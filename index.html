@@ -51,6 +51,9 @@
   .price-card .amount{font-size:40px;color:var(--ink)}
   .badge{font-family:Georgia,serif;color:var(--ink);white-space:nowrap}
   a{color:var(--ink)}
+  .get{display:inline-block;margin-top:24px;padding:13px 32px;border:1px solid var(--ink);
+    color:var(--ink);text-decoration:none;font-size:18px;white-space:nowrap}
+  .get:hover,.get:focus{background:var(--ink);color:var(--ground)}
   address{font-style:normal}
   footer{padding:36px 0 60px;font-size:15px;color:var(--muted);text-align:center}
   @media (min-width:728px){
@@ -133,8 +136,8 @@
       <span class="held">A build that declared one would not get past the check.</span>
     </li>
     <li>
-      <strong class="said">What you highlight is never stored. Brinsley holds no storage permission, so there is nothing to store it with. It is held while the panel is open, and written only to the file you save.</strong>
-      <span class="held">The browser does not hand the storage interface to an extension that has not asked for it, so on a loaded copy that interface is not empty — it is absent. This is a stronger thing to be able to say than "we did not write anything down", and it is why the permission was given up.</span>
+      <strong class="said">What you highlight is never stored. Brinsley holds no storage permission, and no build ships that writes your reading to any store the browser offers. It is held while the panel is open, and written only to the file you save.</strong>
+      <span class="held">Two different things hold this up, and it is worth knowing which is which. The extension's own storage interface is not merely empty on a loaded copy — it is absent, because the browser does not hand it to an extension that has not asked for it, and that is why the permission was given up. Every other store a browser page is given for free does exist, here as everywhere, and the check refuses to build a version of Brinsley that writes your reading into one.</span>
     </li>
     <li>
       <strong class="said">Every byte of Brinsley ships inside it. No third-party code, no analytics, no telemetry.</strong>
@@ -176,7 +179,7 @@
   <ul>
     <li>It runs only when you click the icon. It declares no content script, so nothing happens on page load.</li>
     <li>It reads only the tab in front of you, and only the passage you highlighted.</li>
-    <li>It holds no storage permission. The browser does not hand that interface to an extension that has not asked for it, so what you highlight cannot be written down.</li>
+    <li>It holds no storage permission, so the browser hands it no storage interface of its own. What you highlight is not written into any other store either, and no build that did so would pass the check.</li>
     <li>It makes no network request. There is no server to speak to, no account to hold, and no key to surrender.</li>
   </ul>
   <p>Brinsley holds two permissions — <code>activeTab</code> and <code>scripting</code> — and no host permissions at all.</p>
@@ -190,8 +193,8 @@
   <ul style="margin-top:18px">
     <li><strong>English only</strong>, for now.</li>
     <li><strong>The level shown is an estimate</strong> from word frequency, not a measurement against the Common European Framework. That is why every card reads <span class="badge">~B2</span> and never a bare <span class="badge">B2</span>: the bands behind it are ours, authored by hand, and a plain letter would claim a standard we did not test against.</li>
-    <li><strong>It reads the page you are on.</strong> It cannot reach a file saved to your disk unless you switch on file access yourself, and it will say so plainly rather than ask you to reload.</li>
-    <li><strong>It is version 0.1.0.</strong> The word list is bounded and it will occasionally offer a name, or miss a word you wanted. The review table is there because of exactly that: nothing reaches your deck that you did not tick.</li>
+    <li><strong>It reads the page you are on.</strong> If it cannot reach a page, it says so plainly rather than asking you to reload.</li>
+    <li><strong>It is version 0.1.1.</strong> The word list is bounded and it will occasionally offer a name, or miss a word you wanted. The review table is there because of exactly that: nothing reaches your deck that you did not tick.</li>
   </ul>
 </section>
 
@@ -199,14 +202,36 @@
   <h2>Price</h2>
   <div class="price-card">
     <div class="amount">Free</div>
-    <p style="margin-top:10px">Version 0.1.0 is free.<br>No account, no sign-in, no card, and nothing to cancel.</p>
+    <p style="margin-top:10px">Version 0.1.1 is free.<br>No account, no sign-in, no card, and nothing to cancel.</p>
   </div>
   <!-- Says nothing about the payment model, deliberately. A model is the one class
        of promise this project cannot hold by engineering, so what is promised here
        is disclosure instead, which stays keepable whatever the model turns out to
-       be. The present-tense claims above are pinned to 0.1.0 for the same reason:
-       they are true of 0.1.0 permanently, but would go false the day a tier
-       appears. Do not restore a promise about how Brinsley charges. -->
+       be. The present-tense claims above are pinned to the shipped version for
+       the same reason: they are true of that version permanently, but would go
+       false the day a tier appears. The number is not repeated here on purpose.
+       L5 strips comments before reading, so a version named inside one is a
+       copy nothing holds to § Published — this comment said 0.1.0 until
+       2026-08-11 and would have gone stale at every release after it. Do not
+       restore a promise about how Brinsley charges. -->
+
+  <!-- A text link rather than Mozilla's "Get the Add-on" button, ruled
+       2026-08-12. That button is a PNG you host yourself; the 2015 post offering
+       it gives no markup, only "save these images". Hotlinking their copy would
+       fetch an image from blog.mozilla.org on every visit, handing over an IP
+       and a Referer naming this page — falsifying the sentence in § Six
+       Promises that says this page loads nothing from anywhere else, on the
+       page that says it, and no gate reads this file for external resources.
+       Self-hosting the PNG would cost "It is one file" and make the published
+       repository two. Inlining it as a data: URI would keep both sentences and
+       put a 2015 raster among vectors, on an eleven-year-old grant to use
+       someone else's mark. None of the three buys anything this link does not.
+       The locale prefix is left off the URL so the store follows the reader
+       rather than the author. Firefox is named because the destination is
+       Firefox-only, which needs one edit if Edge is ever served — a bullet
+       under TODO.md item 14, where the rest of the Edge copy waits. -->
+  <p class="centre"><a class="get" href="https://addons.mozilla.org/firefox/addon/brinsley-article-to-flashcards/">Get Brinsley for Firefox</a></p>
+
   <p class="note centre" style="margin-top:20px">There is no tip jar on this page and no third party to pass through. If Brinsley ever charges for anything, the price and the terms will be written here before anything is charged anywhere.</p>
 </section>
 
